@@ -41,7 +41,7 @@ def write_hdf5_dataset(
     with h5py.File(hdf5_path.with_suffix(".h5"), "w") as h5f:
         h5f.create_dataset(dataset_name, data=im_array)
 
-        logging.info("Saved dataset to: ", hdf5_path.with_suffix(".h5"))
+        logging.info(f"Saved dataset to: {hdf5_path.with_suffix('.h5')}")
 
 
 def image_dir_to_array(
@@ -74,31 +74,32 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "-i",
-        "input_dir",
-        type=str,
+        "--input_dir",
+        type=Path,
         help="The input directory of one or multiple neurofinder datasets",
     )
     parser.add_argument(
         "-o",
-        "output_dir",
-        type=str,
+        "--output_dir",
+        type=Path,
         help="The output directory of the hdf5-datasets",
     )
     parser.add_argument(
-        "image_extension",
+        "--image_extension",
         type=str,
         default=".png",
         help="The extension of the image files",
     )
     parser.add_argument(
-        "dataset_name",
+        "--dataset_name",
         type=str,
         default="video",
         help="The name of the dataset inside each hdf5-file",
     )
     args = parser.parse_args()
 
-    logging.debug("Working directory is: ", os.getcwd())
+    logging.basicConfig(level=logging.DEBUG)
+    logging.debug(f"Working directory is: {os.getcwd()}")
 
     if not os.path.exists(args.output_dir):
         os.makedirs(args.output_dir)
@@ -108,10 +109,11 @@ def main() -> None:
     ]
     dataset_names: List[str] = [d.parent.name for d in image_dirs]
 
-    logging.info("No. of datasets found: ", len(image_dirs))
+    logging.info(f"No. of datasets found: {len(image_dirs)}")
 
     for im_dir, ds_name in zip(image_dirs, dataset_names):
-        imgs = image_dir_to_array(im_dir)
+        imgs = image_dir_to_array(im_dir, args.image_extension)
+        logging.debug(f"Shape of image-stack: {imgs.shape}")
 
         write_hdf5_dataset(
             imgs,
