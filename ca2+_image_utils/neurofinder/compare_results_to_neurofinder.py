@@ -53,7 +53,9 @@ def plot_comparison_image(args, ds_name, imgs, gt_masks, pred_masks):
     plt.show()
 
     if args.save_figs:
-        plt.savefig(args.pred.with_name(f"comp_{ds_name}-{args.pred.parent.name}.png"))
+        plt.savefig(
+            args.pred.with_name(f"comp_{ds_name}-{args.pred.parent.name}.png")
+        )
 
 
 def parse_cli_args():
@@ -87,16 +89,18 @@ def main() -> None:
     image_dirs: List[Path] = [
         Path(dir) for dir in os.walk(args.input_dir)[0] if "images" in dir
     ]
-    gt_results: List[Path] = [(dir.parent / "result.json") for dir in image_dirs]
+    gt_results: List[Path] = [
+        (dir.parent / "result.json") for dir in image_dirs
+    ]
     dataset_names: List[str] = [d.parent.name for d in image_dirs]
 
     for im_dir, gt_file, ds_name in zip(image_dirs, gt_results, dataset_names):
         imgs = image_dir_to_array(im_dir)
         dims = imgs.shape[1:]
 
-        with open(gt_file) as gt_file:
+        with open(gt_file, "r", encoding="utf-8") as gt_file:
             gt_regions = json.load(gt_file)[0]["regions"]
-        with open(args.pred) as pred_file:
+        with open(args.pred, "r", encoding="utf-8") as pred_file:
             pred_regions = json.load(pred_file)
 
         gt_masks = array(
