@@ -1,7 +1,8 @@
 """Convert Neurofinder folder(s) to hdf5-dataset(s)
 
 This script allows the user to convert the image folder of one or more
-neurofinder datasets to separate hdf5-datasets.
+neurofinder datasets to separate hdf5-datasets. By default the dataset
+inside the hdf5-dataset will be an array of shape [x,y,images]
 
 This script requires that `skimage` and `h5py` be installed within the
 Python environment you are running this script in.
@@ -105,7 +106,7 @@ def main() -> None:
         os.makedirs(args.output_dir)
 
     image_dirs: List[Path] = [
-        Path(dir[0]) for dir in os.walk(args.input_dir) if "images" in dir[0]
+        Path(dir) for dir in os.walk(args.input_dir)[0] if "images" in dir
     ]
     dataset_names: List[str] = [d.parent.name for d in image_dirs]
 
