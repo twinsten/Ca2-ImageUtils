@@ -39,3 +39,5 @@ python plot_comparison.py -i ./neurofinder_datasets -pred ./results.json --save_
 
 ## Further reading
 [Visit](futherreading.md)
+
+[!Bild1](resources/Pic1.png)
