@@ -35,3 +35,7 @@ python plot_comparison.py -i ./neurofinder_datasets -pred ./results.json --save_
 - `coordinates_to_mask()`: Converts coordinate arrays to boolean masks
 - `plot_comparison_image()`: Creates visual comparisons between ground truth and predicted neuron regions
 - `main()`: Processes multiple datasets and generates comparisons
+
+
+## Further reading
+[Visit](futherreading.md)
