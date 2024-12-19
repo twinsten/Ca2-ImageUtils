@@ -1,5 +1,5 @@
 ### Index Page
 
-to readme: [Here](readme.md)
+to readme: [Here](reading.md)
 
 to further reading: [Here](futherreading.md)
