@@ -1,0 +1,13 @@
+remote_theme: just-the-docs/just-the-docs
+title: CellRex Documentation
+description: Documentation for biological file sorting and metadata enrichment
+baseurl: "/your-repo-name"
+url: "https://username.github.io"
+
+# Navigation
+aux_links:
+  "View on GitHub":
+    - "//github.com/username/repo-name"
+
+# Search
+search_enabled: true
