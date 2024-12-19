@@ -1,13 +1,13 @@
-remote_theme: just-the-docs/just-the-docs
+theme: just-the-docs
 title: CellRex Documentation
 description: Documentation for biological file sorting and metadata enrichment
-baseurl: "/your-repo-name"
-url: "https://username.github.io"
+baseurl: "/Ca2-ImageUtils"
+url: "https://twinsten.github.io"
 
 # Navigation
 aux_links:
   "View on GitHub":
-    - "//github.com/username/repo-name"
+    - "//github.com/twinsten/Ca2-ImageUtils"
 
 # Search
 search_enabled: true
