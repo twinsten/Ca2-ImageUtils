@@ -1,13 +1,8 @@
+title: Just the Docs Template
+description: A starter template for a Jeykll site using the Just the Docs theme!
 theme: just-the-docs
-title: CellRex Documentation
-description: Documentation for biological file sorting and metadata enrichment
-baseurl: "/Ca2-ImageUtils"
-url: "https://twinsten.github.io"
 
-# Navigation
+url: https://just-the-docs.github.io
+
 aux_links:
-  "View on GitHub":
-    - "//github.com/twinsten/Ca2-ImageUtils"
-
-# Search
-search_enabled: true
+  Template Repository: https://github.com/just-the-docs/just-the-docs-template
